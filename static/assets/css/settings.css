@@ -1,232 +1,161 @@
+/* SETTINGS PAGE — LIQUID GLASS */
+
 body {
-   background-color: var(--background-image);
-   font-family: "Inter", sans-serif;
-   color: var(--text-primary);
-   margin: 0;
-   padding: 0;
-   letter-spacing: 0px;
-   overflow-x: hidden;
+  background-image:var(--background-image);
+  background-color:var(--background-color);
+  font-family:"DM Sans",sans-serif;
+  color:var(--text-primary);
+  margin:0;padding:0;letter-spacing:0;overflow-x:hidden;
 }
 
-.settings-container {
-   display: flex;
-   flex-wrap: wrap;
-   justify-content: center;
-   gap: 20px;
-   padding: 20% 20px 20px 20px;
+.settings-container{
+  display:flex;flex-wrap:wrap;justify-content:center;
+  gap:18px;padding:20% 20px 40px;
+  animation:fadeUp 0.5s cubic-bezier(0.16,1,0.3,1) 0.15s both;
 }
 
-.settings-title {
-   display: block;
-   font-size: 70px;
-   margin-block-start: 0.67em;
-   margin-block-end: 0.67em;
-   margin-inline-start: 0px;
-   margin-inline-end: 0px;
-   font-weight: bold;
+.settings-title{
+  display:block;font-size:64px;font-weight:800;
+  font-family:"Outfit",sans-serif;letter-spacing:-1px;
+  margin-block-start:0.5em;margin-block-end:0.5em;
 }
 
-.settings-card {
-   background-color: var(--background-settings);
-   border-radius: 10px;
-   padding: 20px;
-   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-   width: 400px;
-   transition: all 0.3s ease;
+/* ── SETTINGS CARD ── */
+.settings-card{
+  position:relative;
+  background:rgba(255,255,255,0.052);
+  backdrop-filter:blur(28px) saturate(130%) brightness(104%);
+  -webkit-backdrop-filter:blur(28px) saturate(130%) brightness(104%);
+  border:1px solid rgba(255,255,255,0.12);
+  border-bottom-color:rgba(255,255,255,0.05);
+  border-radius:var(--radius-lg,24px);
+  padding:24px;
+  width:400px;
+  box-shadow:0 6px 28px rgba(0,0,0,0.40),inset 0 1px 0 rgba(255,255,255,0.12),inset 0 -1px 0 rgba(0,0,0,0.10);
+  transition:transform 0.28s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.28s ease,border-color 0.28s ease;
+  overflow:hidden;
+}
+.settings-card::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:40%;
+  background:linear-gradient(180deg,rgba(255,255,255,0.07) 0%,transparent 100%);
+  border-radius:var(--radius-lg,24px) var(--radius-lg,24px) 0 0;
+  pointer-events:none;
+}
+.settings-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(255,255,255,0.18);
+  box-shadow:0 16px 48px rgba(0,0,0,0.50),inset 0 1px 0 rgba(255,255,255,0.16),
+    0 0 24px rgba(200,205,214,0.06);
 }
 
-.settings-card:hover {
-   transform: translatey(-5px);
-   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+.settings-card h3{
+  margin-top:0;margin-bottom:8px;
+  font-family:"Outfit",sans-serif;font-weight:700;font-size:18px;
+  color:var(--text-primary);letter-spacing:-0.2px;
+}
+.settings-card p{
+  color:rgba(255,255,255,0.50);font-size:13.5px;line-height:1.55;margin-bottom:14px;
 }
 
-.settings-card h3 {
-   margin-top: 0;
-   color: var(--text-primary);
+a{color:var(--accent,#c8cdd6);text-decoration:none;}
+a:hover{color:rgba(255,255,255,0.9);}
+
+/* ── TOGGLE SWITCH ── */
+.switch{position:relative;display:inline-block;width:52px;height:28px;}
+.switch input{opacity:0;width:0;height:0;}
+.slider-round{
+  position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;
+  background:rgba(255,255,255,0.18);
+  transition:0.3s cubic-bezier(0.34,1.56,0.64,1);border-radius:28px;
+  border:1px solid rgba(255,255,255,0.12);
+}
+.slider-round:before{
+  position:absolute;content:"";
+  height:20px;width:20px;left:3px;bottom:3px;
+  background:rgba(255,255,255,0.90);
+  transition:0.3s cubic-bezier(0.34,1.56,0.64,1);border-radius:50%;
+  box-shadow:0 1px 4px rgba(0,0,0,0.3);
+}
+input:checked + .slider-round{background:rgba(200,205,214,0.7);}
+input:checked + .slider-round:before{transform:translateX(24px);}
+
+/* ── INPUTS inside cards ── */
+.settings-card input[type="text"],
+.settings-card input[type="password"],
+input.key-form {
+  padding:12px 16px;
+  width:100%;
+  border-radius:var(--radius-sm,12px);
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,0.11);
+  font-family:"DM Sans",sans-serif;font-size:14px;
+  color:var(--text-primary);outline:none;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.08),0 2px 8px rgba(0,0,0,0.20);
+  transition:background 0.2s ease,border-color 0.2s ease,box-shadow 0.2s ease;
+  margin-top:10px;
+}
+.settings-card input:focus,input.key-form:focus{
+  background:rgba(255,255,255,0.09);
+  border-color:rgba(200,205,214,0.35);
+  box-shadow:0 0 0 3px rgba(200,205,214,0.08),inset 0 1px 0 rgba(255,255,255,0.12);
 }
 
-.settings-card p {
-   color: var(--text-placeholder);
+/* ── SELECT inside cards ── */
+.settings-card select,
+select.td {
+  padding:12px 16px;width:100%;
+  border-radius:var(--radius-sm,12px);
+  background:rgba(255,255,255,0.06);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  color:var(--text-primary);font-size:14px;font-family:"DM Sans",sans-serif;
+  border:1px solid rgba(255,255,255,0.11);border-bottom-color:rgba(255,255,255,0.05);
+  outline:none;cursor:pointer;
+  -webkit-appearance:none;appearance:none;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.08),0 2px 8px rgba(0,0,0,0.20);
+  transition:background 0.2s ease,border-color 0.2s ease;
 }
+.settings-card select option,select.td option{background:#1c1f24;color:rgba(255,255,255,0.88);}
+.settings-card select:hover,select.td:hover{background:rgba(255,255,255,0.09);border-color:rgba(255,255,255,0.18);}
 
-a {
-   color: var(--text-primary);
+/* ── BUTTONS ── */
+button, .key-button {
+  cursor:pointer;
+  border:1px solid rgba(255,255,255,0.12);
+  font-size:14px;font-family:"DM Sans",sans-serif;font-weight:600;
+  transition:all 0.2s cubic-bezier(0.34,1.56,0.64,1);
+  margin-top:10px;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-radius:var(--radius-sm,12px);
+  color:var(--text-primary);
+  height:44px;width:35%;padding:10px 16px;text-align:center;
+  box-shadow:0 2px 8px rgba(0,0,0,0.22),inset 0 1px 0 rgba(255,255,255,0.10);
 }
-
-.switch {
-   position: relative;
-   display: inline-block;
-   width: 60px;
-   height: 34px;
+button:hover,.key-button:hover{
+  background:rgba(255,255,255,0.12);
+  border-color:rgba(255,255,255,0.20);
+  transform:translateY(-2px);
+  box-shadow:0 6px 20px rgba(0,0,0,0.30),inset 0 1px 0 rgba(255,255,255,0.14);
 }
+button:active,.key-button:active{transform:translateY(0);transition-duration:0.1s;}
 
-.switch input {
-   opacity: 0;
-   width: 0;
-   height: 0;
+.key-button{width:50%;padding:10px;}
+
+#buttonLayer{width:400px;display:flex;justify-content:center;gap:10px;}
+#buttonLayer > .key-button{flex-grow:1;padding:10px;box-sizing:border-box;}
+
+#last-updated{margin-top:-3%;}
+#ab-settings{display:flex;align-items:center;gap:5vw;}
+#ab-settings-container{margin-top:13px;margin-left:20px;}
+#warning{color:rgba(240,90,90,0.85);}
+
+@media screen and (max-width:768px){
+  .settings-container{padding:25% 20px 20px;}
+  .settings-card{width:100%;max-width:400px;}
+  .settings-title{font-size:40px;}
+  input,.key-form{width:90%;}
+  button,.key-button{width:100%;max-width:200px;}
 }
-
-.slider-round {
-   position: absolute;
-   cursor: pointer;
-   top: 0;
-   left: 0;
-   right: 0;
-   bottom: 0;
-   background-color: var(--slider-inactive-background);
-   transition: 0.4s;
-   border-radius: 34px;
-}
-
-.slider-round:before {
-   position: absolute;
-   content: "";
-   height: 26px;
-   width: 26px;
-   left: 4px;
-   bottom: 4px;
-   background-color: var(--text-primary);
-   transition: 0.4s;
-   border-radius: 50%;
-}
-
-input:checked + .slider-round {
-   background-color: var(--slider-active-background);
-}
-
-input:checked + .slider-round:before {
-   transform: translateX(26px);
-}
-
-input {
-   padding: 15px;
-   border-radius: 10px;
-   background: var(--background-input);
-   text-align: center;
-   font-size: 20px;
-   border: none;
-   outline: none;
-   color: var(--text-primary);
-}
-
-.key-form {
-   padding: 15px;
-   width: 92.5%;
-   border-radius: 10px;
-   background: var(--background-buttons);
-   text-align: center;
-   font-size: 20px;
-   border: none;
-   outline: none;
-   color: var(--text-primary);
-   margin-top: 10px;
-}
-
-.key-button {
-   cursor: pointer;
-   border: 2px;
-   font-size: 20px;
-   transition: 0.2s;
-   margin-top: 10px;
-   background-color: var(--background-buttons);
-   border-radius: 10px;
-   color: var(--text-primary);
-   height: 50px;
-   width: 50%;
-   padding: 10px;
-   text-align: center;
-}
-
-button {
-   cursor: pointer;
-   border: 2px;
-   transition: 0.2s;
-   margin-top: 10px;
-   background-color: var(--background-buttons);
-   border-radius: 10px;
-   color: var(--text-primary);
-   height: 50px;
-   width: 35%;
-   padding: 10px;
-   text-align: center;
-}
-
-select {
-   padding: 15px;
-   width: 100%;
-   border-radius: 10px;
-   background: var(--background-buttons);
-   color: var(--text-primary);
-   font-size: 20px;
-   border: 0px;
-   outline: none;
-}
-
-#buttonLayer {
-   width: 400px;
-   display: flex;
-   justify-content: center;
-   gap: 10px;
-}
-
-#buttonLayer > .key-button {
-   flex-grow: 1;
-   padding: 10px;
-   box-sizing: border-box;
-}
-
-@media screen and (max-width: 768px) {
-   .settings-container {
-      padding: 25% 20px 20px 20px;
-   }
-   .settings-card {
-      width: 100%;
-      max-width: 400px;
-   }
-
-   .settings-title {
-      font-size: 40px;
-   }
-
-   input,
-   .key-form {
-      width: 90%;
-   }
-
-   button,
-   .key-button {
-      width: 100%;
-      max-width: 200px;
-   }
-}
-
-@media screen and (max-width: 500px) {
-   .settings-container {
-      padding-top: 35%;
-   }
-}
-
-@media screen and (min-width: 1000px) {
-   .settings-container {
-      padding-top: 10%;
-   }
-}
-
-#last-updated {
-   margin-top: -3%;
-}
-
-#ab-settings {
-   display: flex;
-   align-items: center;
-   gap: 5vw;
-}
-
-#ab-settings-container {
-   margin-top: 13px;
-   margin-left: 20px;
-}
-
-#warning {
-   color: red;
-}
+@media screen and (max-width:500px){.settings-container{padding-top:35%;}}
+@media screen and (min-width:1000px){.settings-container{padding-top:10%;}}
