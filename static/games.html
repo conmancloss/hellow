@@ -1,48 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="referrer" content="no-referrer" />
-  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN" />
-  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-  <meta name="color-scheme" content="dark" />
-  <meta name="theme-color" content="#080c14" />
-  <link rel="shortcut icon" id="tab-favicon" href="favicon.png" />
+  <meta charset="UTF-8"/>
+  <meta name="referrer" content="no-referrer"/>
+  <meta http-equiv="X-Frame-Options" content="SAMEORIGIN"/>
+  <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+  <meta name="color-scheme" content="dark"/>
+  <meta name="theme-color" content="#141618"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="shortcut icon" id="tab-favicon" href="favicon.png"/>
   <title id="t">Home</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Liquid Glass Design System -->
-  <link rel="stylesheet" href="/assets/css/global.css?v=7" />
-  <link rel="stylesheet" href="/assets/css/container.css?v=3" />
-  <link rel="stylesheet" href="/assets/css/nav.css?v=02" />
-
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
-  <!-- Scripts -->
+  <link rel="stylesheet" href="/assets/css/global.css?v=8"/>
+  <link rel="stylesheet" href="/assets/css/container.css?v=4"/>
+  <link rel="stylesheet" href="/assets/css/nav.css?v=03"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <script src="/assets/js/index-3.js"></script>
-
-  <!-- Ads -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6840529569014734"
-    crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6840529569014734" crossorigin="anonymous"></script>
 </head>
-
 <body>
-
-  <!-- ── Floating Glass Nav ── -->
   <div class="f-nav"></div>
-
-  <!-- ── Search & Filter Bar ── -->
   <div class="input-c">
-    <input
-      type="text"
-      id="search"
-      onkeyup="bar()"
-      placeholder="&#xf002;  Search games..."
-      autocomplete="off"
-      spellcheck="false"
-    />
+    <input type="text" id="search" onkeyup="bar()" placeholder="Search games..." autocomplete="off" spellcheck="false"/>
     <select id="category" name="category" onchange="category()">
       <option value="all">All</option>
       <option value="android">Android Emulator</option>
@@ -53,28 +31,19 @@
       <option value="local">Local</option>
     </select>
   </div>
-
-  <!-- ── Pinned Games ── -->
   <div class="pinned"></div>
-
-  <!-- ── All Games Grid ── -->
   <div class="apps"></div>
-
-  <!-- ── App Logic ── -->
   <script src="/assets/js/c1.js?v=001"></script>
   <script src="./assets/mathematics/bundle.js?v=2025-04-15"></script>
   <script src="./assets/mathematics/config.js?v=2025-04-15"></script>
   <script src="/assets/js/m1.js"></script>
-
-  <!-- ── Analytics (DO NOT REMOVE) ── -->
+  <!-- DO NOT REMOVE-->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-WKJQ5QHQTJ"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag("js", new Date());
-    gtag("config", "G-WKJQ5QHQTJ");
+    window.dataLayer=window.dataLayer||[];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js",new Date());gtag("config","G-WKJQ5QHQTJ");
   </script>
-
+  <!-- DO NOT REMOVE-->
 </body>
-
 </html>
