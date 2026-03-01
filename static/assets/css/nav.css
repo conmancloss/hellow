@@ -1,169 +1,201 @@
+
+Copy
+
+/* ══════════════════════════════════════════
+   LIQUID GLASS NAV — GREY SCHEME
+   ══════════════════════════════════════════ */
+
 .material-symbols-outlined {
-   font-variation-settings:
-      "FILL" 0,
-      "wght" 400,
-      "GRAD" 0,
-      "opsz" 48;
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
 }
 
-.f-nav #icon-container {
-   display: flex;
-   align-items: center;
+.f-nav #icon-container { display: flex; align-items: center; }
+
+.f-nav img {
+  width: auto;
+  height: 36px;
+  padding: 0;
+  object-fit: contain;
+  filter: drop-shadow(0 0 6px rgba(200,205,214,0.25));
 }
 
-img {
-   width: 100%;
-   height: 100%;
-   padding-top: 5px;
-}
+.f-nav-container { min-width: 5vw; min-height: 10vh; display: inline; }
 
-.f-nav-container {
-   min-width: 5vw;
-   min-height: 10vh;
-   display: inline;
-}
-
+/* ── THE FLOATING PILL ── */
 .f-nav {
-   top: 0;
-   letter-spacing: 2px;
-   font-size: 22px;
-   left: 0;
-   right: 0;
-   min-height: 10vh;
-   padding: 0 25px;
-   box-sizing: border-box;
-   background-color: var(--background-nav);
-   box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.5);
-   -webkit-backdrop-filter: var(--backdrop-filter);
-   backdrop-filter: var(--backdrop-filter);
-   transition: 0.35s ease;
-   border-radius: 15px;
-   width: fill;
-   margin: 15px;
-   z-index: 100;
-   position: fixed;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  min-height: 62px;
+  margin: 14px 18px;
+  padding: 0 24px;
+  box-sizing: border-box;
+
+  /* Grey glass surface */
+  background: rgba(30, 33, 38, 0.55);
+  backdrop-filter: blur(40px) saturate(140%) brightness(105%);
+  -webkit-backdrop-filter: blur(40px) saturate(140%) brightness(105%);
+
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-bottom-color: rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-xl, 32px);
+
+  box-shadow:
+    0 10px 40px rgba(0,0,0,0.45),
+    0 3px 10px rgba(0,0,0,0.28),
+    inset 0 1.5px 0 rgba(255,255,255,0.17),
+    inset 0 -1px 0 rgba(0,0,0,0.18),
+    inset 1px 0 0 rgba(255,255,255,0.04),
+    inset -1px 0 0 rgba(255,255,255,0.04);
+
+  animation: navDrop 0.5s cubic-bezier(0.16,1,0.3,1) both;
+  transition: background 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+@keyframes navDrop {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Specular shimmer */
+.f-nav::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 12%; right: 12%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.38) 35%,
+    rgba(255,255,255,0.52) 50%,
+    rgba(255,255,255,0.38) 65%,
+    transparent
+  );
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+/* Soft ambient glow under nav */
+.f-nav::after {
+  content: "";
+  position: absolute;
+  bottom: -18px; left: 22%; right: 22%;
+  height: 18px;
+  background: radial-gradient(ellipse, rgba(180,185,195,0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.f-nav:hover {
+  background: rgba(36, 40, 46, 0.60);
+  box-shadow:
+    0 14px 50px rgba(0,0,0,0.50),
+    0 4px 14px rgba(0,0,0,0.32),
+    inset 0 1.5px 0 rgba(255,255,255,0.22),
+    inset 0 -1px 0 rgba(0,0,0,0.20);
+}
+
+/* ── LOGO ── */
+.f-nav .icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 24px;
+  text-transform: uppercase;
+  font-size: 26px;
+  font-family: "Outfit", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  font-style: normal;
+  text-decoration: none;
+  cursor: pointer;
+  color: rgba(255,255,255,0.93);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: auto;
+  transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), filter 0.28s ease;
 }
 
 .f-nav .icon:hover {
-   transform: translateY(-15%) scale(1.03);
-   font-weight: 800;
+  transform: translateY(-50%) scale(1.04);
+  filter: drop-shadow(0 0 10px rgba(200,205,214,0.45));
 }
 
-.f-nav .icon {
-   position: absolute;
-   float: left;
-   text-transform: uppercase;
-   font-size: 30px;
-   font-family: "Inter", sans-serif;
-   cursor: pointer;
-   color: var(--text-primary);
-   font-weight: 600;
-   margin-left: 5px;
-   font-style: normal;
-   text-decoration: none;
-   transition: all 0.2s ease;
-   height: 5vh;
-   top: 18%;
-}
-
+/* ── RIGHT NAV LINKS ── */
 .f-nav-right {
-   position: absolute;
-   top: 50%;
-   transform: translateY(-50%);
-   text-transform: uppercase;
-   font-size: 18px;
-   color: var(--text-primary);
-   font-weight: 600;
-   right: 2%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 18px;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  color: rgba(255,255,255,0.52);
 }
 
 .f-nav-right .navbar-link {
-   margin-left: 10px;
-   text-transform: uppercase;
-   cursor: pointer;
-   color: var(--text-primary);
-   font-weight: 800;
-   right: 2%;
-   font-family: "Inter", sans-serif;
-   font-style: normal;
-   text-decoration: none;
-   transition: all 0.2s ease;
-   transform: translateX(0%);
-}
-
-@media (orientation: portrait) {
-   .f-nav-right .navbar-link {
-      margin-left: 10px;
-      text-transform: uppercase;
-      font-size: 2.5vw;
-      cursor: pointer;
-      color: var(--text-primary);
-      font-weight: 800;
-      right: 2%;
-      font-family: "Inter", sans-serif;
-      font-style: normal;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      transform: translateX(0%);
-   }
-   .f-nav-right .navbar-link:hover {
-      text-transform: uppercase;
-      cursor: pointer;
-      font-weight: 800;
-      font-family: "Inter", sans-serif;
-      font-style: normal;
-      font-size: 3vw;
-      transform: translateX(-20%);
-   }
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  font-style: normal;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: rgba(255,255,255,0.52);
+  transition:
+    color 0.15s ease,
+    background 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.28s cubic-bezier(0.34,1.56,0.64,1);
 }
 
 .f-nav-right .navbar-link:hover {
-   text-transform: uppercase;
-   cursor: pointer;
-   font-weight: 800;
-   font-family: "Inter", sans-serif;
-   font-style: normal;
-   font-size: 3vh;
-   transform: translateX(-20%);
+  color: rgba(255,255,255,0.92);
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.12);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.22), inset 0 1px 0 rgba(255,255,255,0.10);
+  transform: translateY(-1px);
+  font-size: 13px;
 }
 
-.navbar-icon {
-   margin-right: 5px;
-   transition: all 0.2s ease;
-}
-
-.navbar-link {
-   margin-right: 5px;
-}
+.navbar-icon { margin-right: 4px; opacity: 0.65; transition: opacity 0.15s; }
+.navbar-link { margin-right: 5px; }
+.navbar-link:hover .navbar-icon { opacity: 1; }
 
 .navbar-link:hover > .settings-icon {
-   animation: spin 0.5s;
-   animation-timing-function: cubic-bezier(0, 1.04, 0.91, 0.99);
-}
-
-@media (max-width: 768px) {
-   .f-nav-right .navbar-link an {
-      display: none;
-   }
-   .f-nav-right .fa-solid {
-      display: inline;
-   }
-   .f-nav-right .navbar-link {
-      font-size: 4.5vw;
-   }
+  animation: spin 0.55s cubic-bezier(0.34,1.56,0.64,1) both;
 }
 
 @keyframes spin {
-   from {
-      transform: rotate(0deg);
-   }
-   to {
-      transform: rotate(360deg);
-   }
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .f-nav { margin: 10px; min-height: 54px; padding: 0 16px; border-radius: 22px; }
+  .f-nav .icon { font-size: 22px; left: 16px; }
+  .f-nav-right { right: 10px; }
+  .f-nav-right .navbar-link an { display: none; }
+  .f-nav-right .fa-solid { display: inline; }
+  .f-nav-right .navbar-link { font-size: 4vw; padding: 6px 10px; }
 }
 
 @media (orientation: portrait) {
-   img {
-      height: 40px;
-   }
+  .f-nav-right .navbar-link { font-size: 2.4vw; }
+  .f-nav-right .navbar-link:hover { font-size: 2.4vw; transform: translateY(-1px); }
+  .f-nav img { height: 32px; }
 }
