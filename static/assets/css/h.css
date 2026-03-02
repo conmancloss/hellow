@@ -4,7 +4,8 @@
 
 .main {
   display:flex;flex-direction:column;align-items:center;justify-content:center;
-  position:relative;z-index:1;width:100%;
+  position:relative;z-index:10;width:100%;
+  pointer-events:auto;
 }
 
 .title {
@@ -83,6 +84,9 @@ input {
   background-repeat:no-repeat;background-size:cover;background-position:50% 50%;
   overflow:hidden;
   display:flex;align-items:center;justify-content:center;
+}
+#particles-js > *:not(.main) {
+  pointer-events:none;
 }
 .particles-js-canvas-el{
   z-index:0;top:0;left:0;position:absolute;
