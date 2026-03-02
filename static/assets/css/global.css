@@ -48,18 +48,10 @@ body::before{
 }
 
 /* MAIN CONTENT */
-  .main {
-  position: relative;   /* above particles */
+.main {
+  position: relative;
   z-index: 3;
   width: 100%;
-  height: 100vh;        /* full viewport height */
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* vertical centering */
-  align-items: center;     /* horizontal centering */
-  text-align: center;
-  gap: 20px;               /* space between title and search bar */
-}
 }
 
 /* ANIMATIONS */
