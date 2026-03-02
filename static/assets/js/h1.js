@@ -167,16 +167,15 @@ document.addEventListener("DOMContentLoaded", event => {
 });
 // Splash texts
 const SplashT = [
-  "Over 8 Million Users since 2023",
+  "zero the fastest growing unblocked games site",
   "Fastest growing proxy server",
-  "Made by xBubbo",
-  "Check out discord.gg/interstellar :)",
+  "Made by zero studios",
   "Thanks for using the site",
-  "Follow us on Tiktok (@useinterstellar)",
-  "Subscribe to us on YouTube (@unblocking)",
-  "Subscribe to my Youtube (@xbubbo)",
-  "Check out the settings page",
-  "Check out our Patreon (https://www.patreon.com/gointerstellar)",
+  "play more often would ya",
+  "zero is the best",
+  "zero bad games",
+  "try idle tycoon start-up it is so fun",
+  "check settings customise it to your liking",
 ];
 
 let SplashI = Math.floor(Math.random() * SplashT.length);
