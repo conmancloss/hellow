@@ -176,6 +176,7 @@ const SplashT = [
   "zero bad games",
   "try idle tycoon start-up it is so fun",
   "check settings customise it to your liking",
+  "check out Zero's minecraft server, Void search Minecraft it has our logo",
 ];
 
 let SplashI = Math.floor(Math.random() * SplashT.length);
