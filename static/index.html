@@ -36,16 +36,16 @@
   <!-- WHATS NEW POPUP -->
   <div id="whats-new-overlay" style="display:none;">
     <div id="whats-new-modal">
-      <div id="whats-new-badge">NEW</div>
-      <div id="whats-new-icon">🎮</div>
-      <h2 id="whats-new-title">What's New?</h2>
+      <div id="whats-new-badge"></div>
+      <div id="whats-new-icon"></div>
+      <h2 id="whats-new-title"></h2>
       <div id="whats-new-divider"></div>
       <div id="whats-new-content">
-        <div class="wn-version-tag">V6.0</div>
-        <p class="wn-headline">New UI — The Games Update</p>
-        <p class="wn-desc">A fresh new look and a massive expansion to the games library. Explore the redesigned interface built for speed, style, and play.</p>
+        <div class="wn-version-tag" id="whats-new-version-tag"></div>
+        <p class="wn-headline" id="whats-new-headline"></p>
+        <p class="wn-desc" id="whats-new-desc"></p>
       </div>
-      <button id="whats-new-close">Got it</button>
+      <button id="whats-new-close"></button>
     </div>
   </div>
   <style>
@@ -103,6 +103,7 @@
       border-radius: 999px;
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
+      white-space: nowrap;
     }
     #whats-new-icon {
       font-size: 40px;
@@ -186,30 +187,45 @@
   </style>
   <script>
     (function() {
-      // Version key — update this string to show the popup again for all users
-      var POPUP_VERSION = "v6.0-games-update";
-      var storageKey = "whatsNewSeen_" + POPUP_VERSION;
-      var overlay = document.getElementById("whats-new-overlay");
+      var overlay  = document.getElementById("whats-new-overlay");
       var closeBtn = document.getElementById("whats-new-close");
 
-      if (!localStorage.getItem(storageKey)) {
-        overlay.style.display = "flex";
-      }
+      fetch("/popup-version.json?_=" + Date.now())
+        .then(function(r) { return r.json(); })
+        .then(function(d) {
+          // Populate all text from the JSON
+          document.getElementById("whats-new-badge").textContent       = d.badge       || "NEW";
+          document.getElementById("whats-new-icon").textContent        = d.icon        || "🎮";
+          document.getElementById("whats-new-title").textContent       = d.title       || "What's New?";
+          document.getElementById("whats-new-version-tag").textContent = d.versionTag  || "";
+          document.getElementById("whats-new-headline").textContent    = d.headline    || "";
+          document.getElementById("whats-new-desc").textContent        = d.description || "";
+          closeBtn.textContent                                          = d.buttonText  || "Got it";
 
-      function dismiss() {
-        overlay.style.transition = "opacity 0.3s ease";
-        overlay.style.opacity = "0";
-        setTimeout(function() { overlay.style.display = "none"; }, 300);
-        localStorage.setItem(storageKey, "1");
-      }
+          // Show only if this version hasn't been seen
+          var storageKey = "whatsNewSeen_" + d.version;
+          if (!localStorage.getItem(storageKey)) {
+            overlay.style.display = "flex";
+          }
 
-      closeBtn.addEventListener("click", dismiss);
-      overlay.addEventListener("click", function(e) {
-        if (e.target === overlay) dismiss();
-      });
-      document.addEventListener("keydown", function(e) {
-        if (e.key === "Escape") dismiss();
-      });
+          function dismiss() {
+            overlay.style.transition = "opacity 0.3s ease";
+            overlay.style.opacity = "0";
+            setTimeout(function() { overlay.style.display = "none"; }, 300);
+            localStorage.setItem(storageKey, "1");
+          }
+
+          closeBtn.addEventListener("click", dismiss);
+          overlay.addEventListener("click", function(e) {
+            if (e.target === overlay) dismiss();
+          });
+          document.addEventListener("keydown", function(e) {
+            if (e.key === "Escape") dismiss();
+          });
+        })
+        .catch(function() {
+          // If fetch fails, silently skip the popup
+        });
     })();
   </script>
 </body>
