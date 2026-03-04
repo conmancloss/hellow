@@ -1,5 +1,7 @@
 {
+  # change for update to pop-up
   "version": "v7.0",
+  # change for looks of pop-up
   "badge": "NEW",
   "icon": "🎮",
   "title": "What's New?",
