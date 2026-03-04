@@ -33,5 +33,184 @@
   <script src="./assets/mathematics/bundle.js?v=2025-04-15"></script>
   <script src="./assets/mathematics/config.js?v=2025-04-15"></script>
   <script src="/assets/js/m1.js"></script>
+  <!-- WHATS NEW POPUP -->
+  <div id="whats-new-overlay" style="display:none;">
+    <div id="whats-new-modal">
+      <div id="whats-new-badge">NEW</div>
+      <div id="whats-new-icon">🎮</div>
+      <h2 id="whats-new-title">What's New?</h2>
+      <div id="whats-new-divider"></div>
+      <div id="whats-new-content">
+        <div class="wn-version-tag">V6.0</div>
+        <p class="wn-headline">New UI — The Games Update</p>
+        <p class="wn-desc">A fresh new look and a massive expansion to the games library. Explore the redesigned interface built for speed, style, and play.</p>
+      </div>
+      <button id="whats-new-close">Got it</button>
+    </div>
+  </div>
+  <style>
+    #whats-new-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(10, 11, 13, 0.72);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      animation: wnFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    @keyframes wnFadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes wnSlideUp {
+      from { opacity: 0; transform: translateY(28px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    #whats-new-modal {
+      position: relative;
+      width: min(420px, 90vw);
+      background: rgba(255, 255, 255, 0.055);
+      backdrop-filter: blur(40px) saturate(140%) brightness(108%);
+      -webkit-backdrop-filter: blur(40px) saturate(140%) brightness(108%);
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-bottom-color: rgba(255, 255, 255, 0.05);
+      border-radius: 28px;
+      box-shadow: 0 8px 48px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.13), inset 0 -1px 0 rgba(0,0,0,0.12);
+      padding: 36px 32px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      animation: wnSlideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+    }
+    #whats-new-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(200, 205, 214, 0.15);
+      border: 1px solid rgba(200, 205, 214, 0.28);
+      color: rgba(255,255,255,0.80);
+      font-family: "Outfit", sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 999px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    #whats-new-icon {
+      font-size: 40px;
+      margin-bottom: 14px;
+      filter: drop-shadow(0 0 14px rgba(200,205,214,0.25));
+    }
+    #whats-new-title {
+      font-family: "Outfit", sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.93);
+      letter-spacing: -0.5px;
+      text-transform: uppercase;
+      text-shadow: 0 2px 16px rgba(0,0,0,0.4);
+      margin-bottom: 18px;
+    }
+    #whats-new-divider {
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(200,205,214,0.35), transparent);
+      border-radius: 999px;
+      margin-bottom: 20px;
+    }
+    #whats-new-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 26px;
+    }
+    .wn-version-tag {
+      font-family: "Outfit", sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(200, 205, 214, 0.65);
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.10);
+      padding: 3px 12px;
+      border-radius: 999px;
+    }
+    .wn-headline {
+      font-family: "Outfit", sans-serif;
+      font-size: 19px;
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.90);
+      letter-spacing: -0.2px;
+    }
+    .wn-desc {
+      font-family: "DM Sans", sans-serif;
+      font-size: 13.5px;
+      color: rgba(255, 255, 255, 0.42);
+      line-height: 1.6;
+      max-width: 300px;
+    }
+    #whats-new-close {
+      font-family: "DM Sans", sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.88);
+      background: rgba(255, 255, 255, 0.09);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-bottom-color: rgba(255,255,255,0.05);
+      border-radius: 999px;
+      padding: 11px 36px;
+      cursor: pointer;
+      transition: background 0.22s ease, border-color 0.22s ease, transform 0.18s ease, box-shadow 0.22s ease;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.28), inset 0 1px 0 rgba(255,255,255,0.12);
+      outline: none;
+    }
+    #whats-new-close:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(200, 205, 214, 0.30);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.16);
+    }
+    #whats-new-close:active {
+      transform: translateY(0px) scale(0.98);
+    }
+  </style>
+  <script>
+    (function() {
+      // Version key — update this string to show the popup again for all users
+      var POPUP_VERSION = "v6.0-games-update";
+      var storageKey = "whatsNewSeen_" + POPUP_VERSION;
+      var overlay = document.getElementById("whats-new-overlay");
+      var closeBtn = document.getElementById("whats-new-close");
+
+      if (!localStorage.getItem(storageKey)) {
+        overlay.style.display = "flex";
+      }
+
+      function dismiss() {
+        overlay.style.transition = "opacity 0.3s ease";
+        overlay.style.opacity = "0";
+        setTimeout(function() { overlay.style.display = "none"; }, 300);
+        localStorage.setItem(storageKey, "1");
+      }
+
+      closeBtn.addEventListener("click", dismiss);
+      overlay.addEventListener("click", function(e) {
+        if (e.target === overlay) dismiss();
+      });
+      document.addEventListener("keydown", function(e) {
+        if (e.key === "Escape") dismiss();
+      });
+    })();
+  </script>
 </body>
 </html>
