@@ -126,6 +126,60 @@
       </button>
     </div>
 
+    <!-- NOVA LAUNCH MODAL -->
+    <div id="nova-modal" class="maint-panel nova-hidden">
+      <div class="maint-badge nova-badge-pill">NOW LIVE</div>
+
+      <div class="nova-star-icon">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" width="56" height="56">
+          <circle cx="50" cy="50" r="50" fill="rgba(255,255,255,0.06)"/>
+          <path d="M50,18 C51.2,35 65,49 82,50 C65,51 51.2,65 50,82 C48.8,65 35,51 18,50 C35,49 48.8,35 50,18Z" fill="rgba(255,255,255,0.88)"/>
+          <circle cx="50" cy="50" r="4" fill="white"/>
+        </svg>
+      </div>
+
+      <h2 class="maint-title nova-meet-label">MEET</h2>
+      <div class="nova-name-glow">NOVA</div>
+
+      <div class="maint-divider nova-divider-gap"></div>
+
+      <p class="maint-body">
+        Zero has evolved. Something faster, cleaner,<br>and smarter has taken its place.<br>
+        <strong>Nova</strong> — private browsing, reimagined.
+      </p>
+
+      <div class="nova-features">
+        <div class="nova-feat"><span class="nova-feat-icon">⚡</span><span>Ultraviolet proxy engine</span></div>
+        <div class="nova-feat"><span class="nova-feat-icon">🔒</span><span>About:blank stealth mode</span></div>
+        <div class="nova-feat"><span class="nova-feat-icon">🎭</span><span>Tab cloaking built in</span></div>
+        <div class="nova-feat"><span class="nova-feat-icon">🎮</span><span>Games, apps &amp; more</span></div>
+      </div>
+
+      <a class="maint-btn primary nova-launch-btn" href="https://n0va0.vercel.app/" target="_blank" rel="noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Open Nova Now
+      </a>
+
+      <div class="nova-url-chip">n0va0.vercel.app</div>
+
+      <!-- Save data section — for latecomers -->
+      <div class="nova-save-block">
+        <div class="nova-save-block-label">MIGRATING FROM ZERO?</div>
+        <p class="nova-save-block-desc">Download your Zero save data and upload it in Nova Settings to restore your shortcuts, themes, and preferences.</p>
+        <div class="nova-save-btns">
+          <button class="maint-btn primary nova-dl-btn" id="nova-download-btn">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Save Data
+          </button>
+          <button class="maint-btn ghost nova-info-btn" id="nova-info-btn">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            What is save data?
+          </button>
+        </div>
+      </div>
+    </div>
+
+
   </div>
 
   <!-- ═══════════════════════════════════════════════════════════
@@ -184,7 +238,7 @@
         0 12px 64px rgba(0,0,0,0.65),
         0 2px 0 rgba(255,255,255,0.06) inset,
         0 -1px 0 rgba(0,0,0,0.14) inset;
-      padding: 44px 36px 36px;
+      padding: 46px 32px 32px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -291,7 +345,7 @@
       background: rgba(255,255,255,0.035);
       border: 1px solid rgba(255,255,255,0.09);
       border-radius: 16px;
-      padding: 20px 20px 18px;
+      padding: 18px 18px 16px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -480,15 +534,295 @@
       font-size: 12px;
       color: rgba(255,255,255,0.65);
     }
+
+    /* ── Nova modal ───────────────────────────────────────────── */
+    .nova-hidden { display: none !important; }
+
+    #nova-modal {
+      animation: novaReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+      padding: 48px 32px 32px;
+      gap: 0;
+    }
+    @keyframes novaReveal {
+      from { opacity: 0; transform: translateY(40px) scale(0.94); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .nova-badge-pill {
+      background: rgba(255,255,255,0.10);
+      border-color: rgba(255,255,255,0.22);
+      color: rgba(255,255,255,0.90);
+      letter-spacing: 3px;
+    }
+
+    .nova-star-icon {
+      margin-bottom: 14px;
+      filter: drop-shadow(0 0 24px rgba(255,255,255,0.18));
+      animation: starPulse 3s ease-in-out infinite;
+    }
+    @keyframes starPulse {
+      0%, 100% { filter: drop-shadow(0 0 16px rgba(255,255,255,0.15)); transform: scale(1); }
+      50%       { filter: drop-shadow(0 0 36px rgba(255,255,255,0.38)); transform: scale(1.04); }
+    }
+
+    .nova-meet-label {
+      font-size: 13px !important;
+      font-weight: 700 !important;
+      letter-spacing: 4px !important;
+      color: rgba(255,255,255,0.35) !important;
+      margin: 0 0 4px !important;
+    }
+
+    .nova-name-glow {
+      font-family: "Outfit", sans-serif;
+      font-size: 58px;
+      font-weight: 800;
+      letter-spacing: 12px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.95);
+      text-shadow:
+        0 0 40px rgba(255,255,255,0.30),
+        0 2px 24px rgba(0,0,0,0.5);
+      margin-bottom: 0;
+      animation: novaGlow 3s ease-in-out infinite;
+      line-height: 1;
+    }
+    @keyframes novaGlow {
+      0%, 100% { text-shadow: 0 0 28px rgba(255,255,255,0.18), 0 2px 20px rgba(0,0,0,0.5); }
+      50%       { text-shadow: 0 0 64px rgba(255,255,255,0.48), 0 2px 20px rgba(0,0,0,0.5); }
+    }
+
+    .nova-divider-gap {
+      margin-top: 20px;
+      margin-bottom: 18px;
+    }
+
+    .nova-features {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7px;
+      margin-bottom: 20px;
+    }
+    .nova-feat {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      background: rgba(255,255,255,0.038);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 10px 13px;
+      font-family: "DM Sans", sans-serif;
+      font-size: 12px;
+      color: rgba(255,255,255,0.52);
+      text-align: left;
+      line-height: 1.35;
+    }
+    .nova-feat-icon {
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+
+    .nova-launch-btn {
+      text-decoration: none;
+      margin-bottom: 10px;
+      background: rgba(255,255,255,0.13) !important;
+      border: 1px solid rgba(255,255,255,0.20) !important;
+      letter-spacing: 0.5px;
+      font-size: 14.5px !important;
+      padding: 13px 28px !important;
+    }
+    .nova-launch-btn:hover {
+      background: rgba(255,255,255,0.20) !important;
+      box-shadow: 0 8px 32px rgba(255,255,255,0.08), 0 2px 8px rgba(0,0,0,0.4) !important;
+    }
+
+    .nova-url-chip {
+      font-family: monospace;
+      font-size: 10.5px;
+      color: rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.045);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 999px;
+      padding: 4px 14px;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    /* Save block inside nova modal */
+    .nova-save-block {
+      width: 100%;
+      background: rgba(255,255,255,0.032);
+      border: 1px solid rgba(255,255,255,0.085);
+      border-radius: 16px;
+      padding: 18px 18px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 9px;
+      box-sizing: border-box;
+    }
+    .nova-save-block-label {
+      font-family: "Outfit", sans-serif;
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      color: rgba(255,255,255,0.32);
+      text-transform: uppercase;
+    }
+    .nova-save-block-desc {
+      font-family: "DM Sans", sans-serif;
+      font-size: 12.5px;
+      color: rgba(255,255,255,0.38);
+      line-height: 1.55;
+      margin: 0;
+      text-align: center;
+      max-width: 300px;
+    }
+    .nova-save-btns {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .nova-dl-btn {
+      font-size: 13.5px !important;
+      padding: 11px 20px !important;
+    }
+    .nova-info-btn {
+      font-size: 12px !important;
+      padding: 9px 20px !important;
+    }
+
+    /* ── Admin password prompt ────────────────────────────────── */
+    #admin-prompt {
+      position: fixed;
+      inset: 0;
+      z-index: 999999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(5,6,8,0.90);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+    }
+    #admin-prompt.visible { display: flex; }
+    #admin-prompt-box {
+      background: rgba(255,255,255,0.055);
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 20px;
+      padding: 32px 28px 24px;
+      width: min(340px, 88vw);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      box-shadow: 0 12px 56px rgba(0,0,0,0.65);
+    }
+    #admin-prompt-label {
+      font-family: "Outfit", sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+    #admin-prompt-input {
+      width: 100%;
+      box-sizing: border-box;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 10px;
+      padding: 11px 16px;
+      font-family: "DM Sans", sans-serif;
+      font-size: 14px;
+      color: rgba(255,255,255,0.85);
+      outline: none;
+      text-align: center;
+      letter-spacing: 3px;
+      caret-color: rgba(255,255,255,0.6);
+    }
+    #admin-prompt-input::placeholder {
+      letter-spacing: 1px;
+      color: rgba(255,255,255,0.22);
+    }
+    #admin-prompt-err {
+      font-family: "DM Sans", sans-serif;
+      font-size: 12px;
+      color: rgba(255,120,120,0.75);
+      min-height: 16px;
+    }
+    #admin-prompt-cancel {
+      font-family: "DM Sans", sans-serif;
+      font-size: 12px;
+      color: rgba(255,255,255,0.28);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+    #admin-prompt-cancel:hover { color: rgba(255,255,255,0.55); }
+
+    /* corner tap zone — invisible */
+    #admin-tap-zone {
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      width: 60px;
+      height: 60px;
+      z-index: 999998;
+    }
+
   </style>
 
   <!-- ═══════════════════════════════════════════════════════════
        MAINTENANCE LOGIC
        ═══════════════════════════════════════════════════════════ -->
+  <!-- Admin password prompt (invisible, triggered by corner taps) -->
+  <div id="admin-prompt">
+    <div id="admin-prompt-box">
+      <div id="admin-prompt-label">Admin Access</div>
+      <input id="admin-prompt-input" type="password" placeholder="enter password" autocomplete="off" spellcheck="false"/>
+      <div id="admin-prompt-err"></div>
+      <button id="admin-prompt-cancel">Cancel</button>
+    </div>
+  </div>
+  <!-- Invisible bottom-right tap zone -->
+  <div id="admin-tap-zone"></div>
+
   <script>
   (function() {
 
-    // ── Save data helpers (mirrored from Nova's logic) ──────────
+    // ── Date check — is it Mar 13 2026 or later? ────────────────
+    var LAUNCH_DATE = new Date('2026-03-13T00:00:00');
+    var now         = new Date();
+    var isLaunched  = now >= LAUNCH_DATE;
+
+    // ── Panels ──────────────────────────────────────────────────
+    var overlay       = document.getElementById('maint-overlay');
+    var mainModal     = document.getElementById('maint-modal');
+    var saveinfoModal = document.getElementById('saveinfo-modal');
+    var novaModal     = document.getElementById('nova-modal');
+
+    // Show the correct initial state
+    function showMaintenance() {
+      mainModal.style.display = 'flex';
+      saveinfoModal.classList.add('saveinfo-hidden');
+      novaModal.classList.add('nova-hidden');
+    }
+    function showNova() {
+      mainModal.style.display = 'none';
+      saveinfoModal.classList.add('saveinfo-hidden');
+      novaModal.classList.remove('nova-hidden');
+    }
+
+    if (isLaunched) {
+      showNova();
+    } else {
+      showMaintenance();
+    }
+
+    // ── Save data helpers ───────────────────────────────────────
     function downloadSaveData() {
       try {
         var data = {};
@@ -511,11 +845,8 @@
     }
 
     // ── Panel switching ─────────────────────────────────────────
-    var mainModal     = document.getElementById('maint-modal');
-    var saveinfoModal = document.getElementById('saveinfo-modal');
-
     function showSaveInfo() {
-      mainModal.style.display     = 'none';
+      mainModal.style.display = 'none';
       saveinfoModal.classList.remove('saveinfo-hidden');
     }
     function showMain() {
@@ -523,16 +854,85 @@
       mainModal.style.display = 'flex';
     }
 
-    // ── Wire buttons ────────────────────────────────────────────
-    document.getElementById('maint-download-btn').addEventListener('click',   downloadSaveData);
-    document.getElementById('maint-info-btn').addEventListener('click',       showSaveInfo);
-    document.getElementById('saveinfo-back-btn').addEventListener('click',    showMain);
+    // ── Wire maintenance buttons ────────────────────────────────
+    document.getElementById('maint-download-btn').addEventListener('click', downloadSaveData);
+    document.getElementById('maint-info-btn').addEventListener('click', showSaveInfo);
+    document.getElementById('saveinfo-back-btn').addEventListener('click', showMain);
     document.getElementById('saveinfo-download-btn').addEventListener('click', downloadSaveData);
 
-    // Block all keyboard shortcuts that could help escape
+    // ── Wire nova panel save buttons ─────────────────────────────
+    // (these elements may not exist if nova modal is hidden, so guard)
+    var novaDownloadBtn = document.getElementById('nova-download-btn');
+    var novaInfoBtn     = document.getElementById('nova-info-btn');
+    if (novaDownloadBtn) novaDownloadBtn.addEventListener('click', downloadSaveData);
+    if (novaInfoBtn)     novaInfoBtn.addEventListener('click', function() {
+      novaModal.style.display = 'none';
+      saveinfoModal.classList.remove('saveinfo-hidden');
+      // Back button should return to nova modal
+      document.getElementById('saveinfo-back-btn').onclick = function() {
+        saveinfoModal.classList.add('saveinfo-hidden');
+        novaModal.classList.remove('nova-hidden');
+      };
+    });
+
+    // ── Block escape / F5 ───────────────────────────────────────
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape' || e.key === 'F5') e.preventDefault();
     }, true);
+
+    // ── Admin: 5 corner taps → password prompt ──────────────────
+    var tapCount    = 0;
+    var tapTimer    = null;
+    var ADMIN_PW    = 'novadev';
+    var adminPrompt = document.getElementById('admin-prompt');
+    var adminInput  = document.getElementById('admin-prompt-input');
+    var adminErr    = document.getElementById('admin-prompt-err');
+
+    document.getElementById('admin-tap-zone').addEventListener('click', function() {
+      tapCount++;
+      clearTimeout(tapTimer);
+      // Reset count after 3 seconds of no taps
+      tapTimer = setTimeout(function() { tapCount = 0; }, 3000);
+      if (tapCount >= 5) {
+        tapCount = 0;
+        clearTimeout(tapTimer);
+        // Show password prompt
+        adminInput.value = '';
+        adminErr.textContent = '';
+        adminPrompt.classList.add('visible');
+        setTimeout(function() { adminInput.focus(); }, 80);
+      }
+    });
+
+    function closeAdminPrompt() {
+      adminPrompt.classList.remove('visible');
+      adminInput.value = '';
+      adminErr.textContent = '';
+    }
+
+    adminInput.addEventListener('keydown', function(e) {
+      e.stopPropagation(); // Don't let panic key intercept
+      if (e.key === 'Enter') {
+        if (adminInput.value === ADMIN_PW) {
+          closeAdminPrompt();
+          // Force show nova modal regardless of date
+          showNova();
+        } else {
+          adminErr.textContent = 'incorrect password';
+          adminInput.value = '';
+          adminInput.style.borderColor = 'rgba(255,100,100,0.4)';
+          setTimeout(function() {
+            adminInput.style.borderColor = '';
+            adminErr.textContent = '';
+          }, 1800);
+        }
+      } else if (e.key === 'Escape') {
+        e.preventDefault();
+        closeAdminPrompt();
+      }
+    });
+
+    document.getElementById('admin-prompt-cancel').addEventListener('click', closeAdminPrompt);
 
   })();
   </script>
